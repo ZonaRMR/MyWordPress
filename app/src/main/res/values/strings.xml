@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Suiseiseeker</string>
+    <string name="seek_categories">Seeking......</string>
 </resources>

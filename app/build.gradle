@@ -27,4 +27,5 @@ dependencies {
     compile 'com.kymjs.rxvolley:rxvolley:1.0.9'
     compile 'com.kymjs.rxvolley:okhttp:1.0.9'
     compile 'com.kymjs.rxvolley:bitmapcore:1.0.9'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
 }

@@ -44,7 +44,7 @@ public class MyJSONParser {
     /**
      * Parse JSON data of Post
      */
-    public ArrayList<Post> loadPosts(JSONObject jsonTotalObject)
+    public static ArrayList<Post> loadPosts(JSONObject jsonTotalObject)
     {
         ArrayList<Post> posts = new ArrayList<>();
         try
