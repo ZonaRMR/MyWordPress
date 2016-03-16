@@ -1,9 +1,15 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,6 +31,7 @@ public class CoordinatorFragment extends Fragment {
     private final static String TAG = "CoordinatorFragment";
     private ProgressDialog mProgressDialog;
 
+
     /**
      * The Work of onCreate() and onDestroy(),do some preparation work
      * Retain Instance and has optionsMenu
@@ -42,6 +49,28 @@ public class CoordinatorFragment extends Fragment {
         super.onDestroy();
     }
     /**
+     * Inflate the layout of this Fragment
+     */
+    private Toolbar mToolbar;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
+    @Override
+    public View onCreateView(LayoutInflater inflater,ViewGroup parent,Bundle savedInstanceState)
+    {
+        View v = inflater.inflate(R.layout.fragment_coordinator_layout,null,false);
+        mToolbar = (Toolbar)v.findViewById(R.id.toolbar_coordinator);
+        Log.d(TAG, "Loading ActionBar");
+       ((MainActivity)getActivity()).setSupportActionBar(mToolbar);
+        Log.d(TAG,"Loading TabLayout....");
+        mTabLayout = (TabLayout)v.findViewById(R.id.tablayout_coordinator);
+        mViewPager = (ViewPager)v.findViewById(R.id.viewPager_coordinator);
+        // Pre-loading one fragment
+        mViewPager.setOffscreenPageLimit(1);
+        return v;
+    }
+
+
+    /**
      * When the activity onCreate() is applied
      * Load Categories
      */
@@ -50,6 +79,7 @@ public class CoordinatorFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
+        loadCategories();
     }
 
     private void loadCategories()
@@ -82,6 +112,7 @@ public class CoordinatorFragment extends Fragment {
         CoreControl.getInstance().addToRequestQueue(jsonCategoryRequest);
 
     }
+
 
 
 

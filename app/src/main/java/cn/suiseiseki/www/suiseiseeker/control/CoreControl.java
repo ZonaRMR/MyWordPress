@@ -2,13 +2,13 @@ package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.app.Application;
 import android.app.DownloadManager;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-import com.kymjs.core.bitmap.BitmapMemoryCache;
 
 import cn.suiseiseki.www.suiseiseeker.tools.LruBitmapCache;
 
@@ -22,13 +22,14 @@ public class CoreControl extends Application{
      * Of course,we just need singleInstance of CoreControl
      * initialize when created
      */
-    private static final String TAG = "CoreControl";
+    private static final String TAG = CoreControl.class.getName();
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
     private static CoreControl mCoreControl;
     @Override
     public void onCreate()
     {
+        super.onCreate();
         mCoreControl = this;
     }
     public synchronized static CoreControl getInstance()
@@ -60,7 +61,7 @@ public class CoreControl extends Application{
     {
         // set default TAG
         request.setTag(TAG);
-        mRequestQueue.add(request);
+        getRequestQueue().add(request);
     }
     public <T> void addToRequestQueue(Request<T> request,String tag)
     {
@@ -68,12 +69,12 @@ public class CoreControl extends Application{
             request.setTag(TAG);
         else
             request.setTag(tag);
-        mRequestQueue.add(request);
+        getRequestQueue().add(request);
     }
     public void cancelRequestByTag(Object tag )
     {
         if(mRequestQueue != null)
-            mRequestQueue.cancelAll(tag);
+            getRequestQueue().cancelAll(tag);
     }
 
 

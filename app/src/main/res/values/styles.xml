@@ -1,11 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
     <!-- The Theme of SuiseiSeeker,You may edit this -->
-    <style name="Sui.Theme" parent="Theme.AppCompat.NoActionBar">
+    <style name="Sui.Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/MainColor</item>
         <item name="colorPrimaryDark">@color/MainColorDark</item>
     </style>
