@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/17.
+ * Adapter for PagerView
  * Use FragmentPagerAdapter instead of FragmentStatePagerAdapter to secure safety,as there are not so many categories
  */
 public class CategoryAdapter extends FragmentPagerAdapter {

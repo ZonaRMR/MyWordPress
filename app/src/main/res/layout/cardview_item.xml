@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+    android:clickable="true"
+    android:layout_margin="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/CardBackground"
+    app:cardCornerRadius = "12dp"
+    app:cardElevation = "6dp"
+    android:id="@+id/card_view"
+    >
+    <!--Use RelativeLayout instead of LinearLayout to better performance-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="9dp">
+        <!--The Thumbnail image before the Post-->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/thumbnail_imageview_cardview"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="9dp"
+            />
+        <!--Post Title-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textview_cardview_post"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/thumbnail_imageview_cardview"
+            />
+        <!--Author Name-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_cardview_author"
+            android:layout_alignBottom="@+id/thumbnail_imageview_cardview"
+            android:layout_alignParentEnd="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
