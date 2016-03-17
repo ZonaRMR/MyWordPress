@@ -2,6 +2,7 @@ package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
+import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
@@ -95,7 +97,11 @@ public class CoordinatorFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 mProgressDialog.dismiss();
-                mCategories = MyJSONParser.loadCategories(response);
+                mCategories = MyJSONParser.ParseCategories(response);
+                CategoryAdapter adaptor = new
+                        CategoryAdapter(getChildFragmentManager(),mCategories);
+                mViewPager.setAdapter(adaptor);
+                mTabLayout.setupWithViewPager(mViewPager);
             }
         };
         Response.ErrorListener errorListener = new Response.ErrorListener() {
@@ -104,13 +110,20 @@ public class CoordinatorFragment extends Fragment {
                 Log.d(TAG,"Error: Requesting JSON for Categories" );
                 mProgressDialog.dismiss();
                 //may use Snackbar instead of Toast
+                Snackbar.make(mTabLayout, R.string.error_load_categories,
+                        Snackbar.LENGTH_INDEFINITE).setAction(R.string.retry,
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                loadCategories();
+                            }
+                        }).show();
 
             }
         };
-        JsonObjectRequest jsonCategoryRequest = new JsonObjectRequest(Settings.MAIN_URL,listener,errorListener);
+        JsonObjectRequest jsonCategoryRequest = new JsonObjectRequest(Settings.CATEGORY_INDEX_URL,listener,errorListener);
         //Send Request to CoreControl to Handle
         CoreControl.getInstance().addToRequestQueue(jsonCategoryRequest);
-
     }
 
 

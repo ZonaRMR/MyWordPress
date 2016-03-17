@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import cn.suiseiseki.www.suiseiseeker.control.RecyclerViewFragment;
+
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/17.
  * Adapter for PagerView
@@ -25,7 +27,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     }
     public Fragment getItem(int pos)
     {
-        return null;
+        return RecyclerViewFragment.newInstance(mCategories.get(pos).getId());
     }
     /**
      * Set the Title of Page

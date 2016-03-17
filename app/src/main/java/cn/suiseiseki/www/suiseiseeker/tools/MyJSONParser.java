@@ -19,13 +19,20 @@ public class MyJSONParser {
     /**
      * Parse JSON data in the webSide and return a List of category
      */
-    public static ArrayList<Category> loadCategories(JSONObject jsonTotalObject)
+    public static ArrayList<Category> ParseCategories(JSONObject jsonTotalObject)
     {
         ArrayList<Category> categoryArrayList = new ArrayList<>();
         try
         {
             JSONArray categories = jsonTotalObject.getJSONArray("categories");
-            for(int i = 0;i<categories.length();i++)
+
+            // The recent categories
+            Category recent = new Category();
+            recent.setName("Recent");
+            recent.setId(0);
+            categoryArrayList.add(recent);
+
+           for(int i = 0;i<categories.length();i++)
             {
                 JSONObject jsonObject = categories.getJSONObject(i);
                 Category category = new Category();
@@ -44,7 +51,7 @@ public class MyJSONParser {
     /**
      * Parse JSON data of Post
      */
-    public static ArrayList<Post> loadPosts(JSONObject jsonTotalObject)
+    public static ArrayList<Post> ParsePosts(JSONObject jsonTotalObject)
     {
         ArrayList<Post> posts = new ArrayList<>();
         try

@@ -2,4 +2,8 @@
     <string name="app_name">Suiseiseeker</string>
     <string name="seek_categories">Seeking......</string>
     <string name="seek_posts">Seeking Posts.....</string>
+    <string name="recent_posts">Recent</string>
+    <string name="failed_load_posts">Failed loading posts,check your network.</string>
+    <string name="retry">Retry</string>
+    <string name="error_load_categories">Error load categories.</string>
 </resources>
