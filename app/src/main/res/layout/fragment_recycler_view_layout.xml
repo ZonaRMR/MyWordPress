@@ -4,7 +4,7 @@
              android:layout_height="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
-             tools:context = "cn.suiseiseki.www.suiseiseeker.control"
+             tools:context = "cn.suiseiseki.www.suiseiseeker.control.RecyclerViewFragment"
     >
     <!--Use a SwipeRefreshLayout to contain posts list-->
     <android.support.v4.widget.SwipeRefreshLayout

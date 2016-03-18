@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
@@ -46,7 +47,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
 
     /* The Model and the State*/
     private int mCategoryID;
-    private int mPage; //Current Page number
+    private int mPage = 1; //Current Page number in the Recycler view
     private ArrayList<Post> mPostArrayList = new ArrayList<>();
     private boolean isLoading = false;
     private boolean isSearch = false;
@@ -110,7 +111,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         super.onCreate(savedInstanceState);
         if(getArguments() != null)
         {
-            mCategoryID = getArguments().getInt(CATEGORY_ID);
+            mCategoryID = getArguments().getInt(CATEGORY_ID,-1);
         }
     }
     /**
@@ -147,27 +148,28 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mMyRecyclerViewAdapter);
         // set a listener to scroll
-        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+                // The Count of items on Screen
+                mVisibleItemCount = mLayoutManager.getChildCount();
+                // The Count of items past
+                mPastVisibleItems = mLayoutManager.findFirstVisibleItemPosition();
+                int totalCount = mLayoutManager.getItemCount();
+                if (mPostNum > mPreviousPostNum)
+                    if (!mPostArrayList.isEmpty())
+                        if (mVisibleItemCount != 0)
+                            if (totalCount > mVisibleItemCount)
+                                if (!isLoading)
+                                    if ((mVisibleItemCount + mPastVisibleItems) >= totalCount)
+                                    {
+                                        loadNextPage();
+                                        mPreviousPostNum = mPostNum;}
             }
 
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                // The Count of items on Screen
-                  mVisibleItemCount = mLayoutManager.getChildCount();
-                // The Count of items past
-                 mPastVisibleItems = mLayoutManager.findFirstVisibleItemPosition();
-                int totalCount = mLayoutManager.getItemCount();
-                if(mPostNum > mPreviousPostNum)
-                    if(!mPostArrayList.isEmpty())
-                        if(mVisibleItemCount > 0)
-                            if(totalCount > mVisibleItemCount)
-                                if(!isLoading)
-                                    if((mVisibleItemCount + mPastVisibleItems)>=totalCount)
-                                        loadNextPage();
-                mPreviousPostNum = mPostNum;
+                super.onScrollStateChanged(recyclerView, newState);
             }
         });
         return  v;
@@ -211,7 +213,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
     }
     public void loadNextPage()
     {
-        mPage = mPage + 1;
+        mPage++;
         loadPost(mPage,true);
     }
     /**
@@ -261,9 +263,9 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
                 mSwipeRefreshLayout.setRefreshing(false);
                 mPostArrayList.addAll(MyJSONParser.ParsePosts(response));
                 // avoid same Posts
-                HashSet<Post> postSet = new HashSet<>(mPostArrayList);
+                HashSet<Post> postSet = new LinkedHashSet<>(mPostArrayList);
                 mPostArrayList.clear();
-                mPostArrayList.addAll(postSet);
+                mPostArrayList.addAll(new ArrayList<>(postSet));
                 mPostNum = mPostArrayList.size();
                 Log.d(TAG, "Receive Posts count:" + mPostNum);
                 mMyRecyclerViewAdapter.notifyDataSetChanged();
