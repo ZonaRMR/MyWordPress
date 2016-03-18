@@ -1,5 +1,6 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -31,9 +32,35 @@ import cn.suiseiseki.www.suiseiseeker.tools.Settings;
  */
 public class CoordinatorFragment extends Fragment {
     private final static String TAG = "CoordinatorFragment";
+    /* The View */
     private ProgressDialog mProgressDialog;
+    private Toolbar mToolbar;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
 
-
+    /* The Model */
+    public static ArrayList<Category> mCategories = null;
+    /* CallBack to Activity,If need a Search */
+    Callback mCallback;
+    public interface Callback
+    {
+        void onSearchSubmit(String searchText);
+    }
+    /**
+     * Attach to Callback Activity
+     */
+    @Override
+    public void onAttach(Activity activity)
+    {
+        super.onAttach(activity);
+        mCallback = (Callback)activity;
+    }
+    @Override
+    public void onDetach()
+    {
+        mCallback = null;
+        super.onDetach();
+    }
     /**
      * The Work of onCreate() and onDestroy(),do some preparation work
      * Retain Instance and has optionsMenu
@@ -53,9 +80,6 @@ public class CoordinatorFragment extends Fragment {
     /**
      * Inflate the layout of this Fragment
      */
-    private Toolbar mToolbar;
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup parent,Bundle savedInstanceState)
     {
@@ -76,7 +100,6 @@ public class CoordinatorFragment extends Fragment {
      * When the activity onCreate() is applied
      * Load Categories
      */
-    public ArrayList<Category> mCategories;
     @Override
     public void onActivityCreated(Bundle savedInstanceState)
     {

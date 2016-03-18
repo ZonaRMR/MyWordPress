@@ -16,11 +16,12 @@
                  android:name="cn.suiseiseki.www.suiseiseeker.control.CoreControl"
                  android:hardwareAccelerated="true"
         android:icon="@mipmap/su" android:theme="@style/Sui.Theme">
-        <activity android:name=".control.MainActivity"
+        <activity android:name="cn.suiseiseki.www.suiseiseeker.control.MainActivity"
+                  android:screenOrientation="portrait"
                   android:label="@string/app_name">
             <intent-filter>
-                <action android:name="ANDROID.INTENT.ACTION.MAIN"/>
-                <category android:name="ANDROID.INTENT.CATEGORY.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 

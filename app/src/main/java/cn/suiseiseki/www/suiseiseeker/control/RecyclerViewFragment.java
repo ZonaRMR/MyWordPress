@@ -46,7 +46,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
 
     /* The Model and the State*/
     private int mCategoryID;
-    private int mPage; //Current Page
+    private int mPage; //Current Page number
     private ArrayList<Post> mPostArrayList = new ArrayList<>();
     private boolean isLoading = false;
     private boolean isSearch = false;
@@ -80,6 +80,12 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
     {
         super.onAttach(activity);
         mCallback = (PostListListener)activity;
+    }
+    @Override
+    public void onDetach()
+    {
+        mCallback = null;
+        super.onDetach();
     }
     /**
      *  Use Argument to transfer category_id to Fragment
@@ -165,6 +171,15 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
             }
         });
         return  v;
+    }
+    /**
+     * When the Activity is Created,Loading posts
+     */
+    @Override
+    public void onActivityCreated(Bundle bundle)
+    {
+        super.onActivityCreated(bundle);
+        loadFirstPage();
     }
     /**
      * Methods to control the loadingView

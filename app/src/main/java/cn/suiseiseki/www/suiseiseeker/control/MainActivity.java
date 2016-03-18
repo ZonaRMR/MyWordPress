@@ -14,7 +14,7 @@ import cn.suiseiseki.www.suiseiseeker.model.Post;
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
  * Must extends AppCompatActivity
  */
-public class MainActivity extends AppCompatActivity implements RecyclerViewFragment.PostListListener{
+public class MainActivity extends AppCompatActivity implements RecyclerViewFragment.PostListListener,CoordinatorFragment.Callback{
 
     private FragmentManager mFragmentManager;
 
@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
      */
     @Override
     public void onPostSelected(Post post, boolean isSearch) {};
+    /**
+     * Callback from CoordinatorFragment
+     * Handle Search Event
+     */
+    @Override
+    public void onSearchSubmit(String searchText)
+    {
+
+    }
 
 
 }

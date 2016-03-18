@@ -32,7 +32,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     {
         void onItemClick(Post post);
     }
-
     /**
      * Use construct method to initialize Posts and Callback
      */
