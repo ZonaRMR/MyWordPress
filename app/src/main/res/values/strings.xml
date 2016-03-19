@@ -6,4 +6,6 @@
     <string name="failed_load_posts">Failed loading posts,check your network.</string>
     <string name="retry">Retry</string>
     <string name="error_load_categories">Error load categories.</string>
+    <string name="menu_search">Search</string>
+    <string name="search_hint">Please enter your search here</string>
 </resources>

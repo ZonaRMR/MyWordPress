@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
     /* The Model and the State*/
     private int mCategoryID;
     private int mPage = 1; //Current Page number in the Recycler view
-    private ArrayList<Post> mPostArrayList = new ArrayList<>();
+    private static ArrayList<Post> mPostArrayList = new ArrayList<>();
     private boolean isLoading = false;
     private boolean isSearch = false;
 
