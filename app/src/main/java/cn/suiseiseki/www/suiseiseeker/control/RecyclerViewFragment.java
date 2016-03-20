@@ -49,7 +49,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
     /* The Model and the State*/
     private int mCategoryID;
     private int mPage = 1; //Current Page number in the Recycler view
-    private static ArrayList<Post> mPostArrayList = new ArrayList<>();
+    private  ArrayList<Post> mPostArrayList = new ArrayList<>();
     private boolean isLoading = false;
     private boolean isSearch = false;
 
@@ -90,7 +90,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         super.onDetach();
     }
     /**
-     *  Use Argument to transfer category_id to Fragment
+     *  Use Argument to transfer category_id to Fragment / or query string
      * @param category_id:the id of category
      * @return a instance of RecyclerViewFragment
      */
@@ -101,6 +101,14 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         RecyclerViewFragment fragment = new RecyclerViewFragment();
         fragment.setArguments(arguments);
         return fragment;
+    }
+    public static RecyclerViewFragment newInstance(String query)
+    {
+        Bundle arguments = new Bundle();
+        arguments.putString(QUERY,query);
+        RecyclerViewFragment fragment = new RecyclerViewFragment();
+        fragment.setArguments(arguments);
+        return  fragment;
     }
     /**
      * The onCreate() of this Fragment
@@ -113,6 +121,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         if(getArguments() != null)
         {
             mCategoryID = getArguments().getInt(CATEGORY_ID,-1);
+            mSearchQuery = getArguments().getString(QUERY,"");
         }
     }
     /**
@@ -234,8 +243,8 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
          * Build the correct Url API
          */
         //It's a search request
-        String url;
-         if(!mSearchQuery.isEmpty())
+         String url;
+         if(!mSearchQuery.equals(""))
          {
              isSearch = true;
              url = Settings.MAIN_URL + "?json=get_search_results&search=" + mSearchQuery +

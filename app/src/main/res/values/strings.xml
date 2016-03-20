@@ -8,4 +8,5 @@
     <string name="error_load_categories">Error load categories.</string>
     <string name="menu_search">Search</string>
     <string name="search_hint">Please enter your search here</string>
+    <string name="search_result">Search Result for</string>
 </resources>

@@ -119,7 +119,6 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
         mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         mSearchView.setIconifiedByDefault(false);
         mSearchView.setQueryHint(getString(R.string.search_hint));
-
         /* The fragment should response to the searchview */
         mSearchView.setOnQueryTextListener(this);
     }
@@ -146,6 +145,12 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
             }
         }
         return true;
+    }
+    // reset actionbar when fragment changes
+
+    public void resetActionBar() {
+        ((MainActivity)getActivity()).setSupportActionBar(mToolbar);
+        mSearchMenuItem.collapseActionView();
     }
     /**
      * When the activity onCreate() is applied
