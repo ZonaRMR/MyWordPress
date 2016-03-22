@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         mFragmentManager.popBackStack();
     }
     /**
-     * Reset TabLayoutFragment's ActionBar if necessary
+     * Reset CoordinatorLayoutFragment's ActionBar if necessary
      */
     private void resetActionBarIfApplicable() {
         if (mSearchViewFragment.isVisible()) {

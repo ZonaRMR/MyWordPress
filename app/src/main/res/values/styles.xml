@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
     </style>
     <!-- The Theme of SuiseiSeeker,You may edit this -->
-    <style name="Sui.Theme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Sui.Theme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/MainColor</item>
         <item name="colorPrimaryDark">@color/MainColorDark</item>
     </style>
@@ -19,7 +19,7 @@
     <!--The Appearance of text in TabLayout-->
     <style name="MyTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#DA70D6</item>
+        <item name="android:textColor">#DAFFFF</item>
     </style>
     <style name="MyTabTextAppearance2" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">17sp</item>

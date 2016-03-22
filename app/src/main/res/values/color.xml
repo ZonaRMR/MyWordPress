@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="MainColorDark">#34C300</color>
-    <color name="MainColor">#66FF33</color>
+    <color name="MainColorDark">#33669F</color>
+    <color name="MainColor">#669FC3</color>
     <color name="colorAccent">#33FFFF</color>
     <color name="CardBackground">#424242</color>
 </resources>

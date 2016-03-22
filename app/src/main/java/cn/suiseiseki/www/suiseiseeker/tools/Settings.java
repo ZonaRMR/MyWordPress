@@ -9,5 +9,5 @@ public class Settings {
      */
     public static final String MAIN_URL = "http://www.suiseiseki.cn/";
     public static final String CATEGORY_INDEX_URL = MAIN_URL + "?json=get_category_index";
-    public static final String DEFAULT_THUMBNAIL_URL = "http://img3.100bt.com/upload/ttq/20140419/1397899210725_middle.png";
+    public static final String DEFAULT_THUMBNAIL_URL = "http://www.iconpng.com/png/freepikons-business/business96.png";
 }
