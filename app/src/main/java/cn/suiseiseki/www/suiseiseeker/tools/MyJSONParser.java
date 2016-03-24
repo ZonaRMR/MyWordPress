@@ -69,6 +69,7 @@ public class MyJSONParser {
                 // Set to zero if there's no comment.
                 post.setCommentCount(object.optInt("comment_count", 0));
                 post.setDate(object.optString("date", "N/A"));
+                post.setExcerpt(object.optString("excerpt","N/A"));
                 post.setContent(object.optString("content","N/A"));
                 // Care that author is not a String,it is a JSONObject
                 JSONObject author = object.getJSONObject("author");

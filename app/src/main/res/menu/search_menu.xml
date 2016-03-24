@@ -7,6 +7,11 @@
         android:icon = "@drawable/ic_search_black_24dp"
         app:showAsAction = "collapseActionView|ifRoom"
         android:title="@string/menu_search"/>
+    <item
+        android:id="@+id/search_menu_item_add_action"
+        android:icon="@drawable/ic_add_black_24dp"
+        app:showAsAction = "collapseActionView|ifRoom"
+        android:title="@string/add_post"/>
 
 
 </menu>

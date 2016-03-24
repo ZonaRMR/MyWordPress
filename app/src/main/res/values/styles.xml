@@ -5,9 +5,10 @@
         <!-- Customize your theme here. -->
     </style>
     <!-- The Theme of SuiseiSeeker,You may edit this -->
-    <style name="Sui.Theme" parent="Theme.AppCompat.NoActionBar">
+    <style name="Sui.Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/MainColor</item>
         <item name="colorPrimaryDark">@color/MainColorDark</item>
+        <item name="android:colorBackground">@color/Light2</item>
     </style>
     <!--Setting the TabLayout-->
     <style name="MyTabLayout">

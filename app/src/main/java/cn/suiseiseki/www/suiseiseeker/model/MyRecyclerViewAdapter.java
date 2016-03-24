@@ -46,13 +46,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
         ImageView mImageView;
-        TextView mTitleTextView,mAuthorTextView;
+        TextView mTitleTextView,mAuthorTextView,mExcerptTextView,mDateTextView;
         public ViewHolder(View view)
         {
             super(view);
             mImageView = (ImageView) view.findViewById(R.id.thumbnail_imageview_cardview);
             mTitleTextView = (TextView) view.findViewById(R.id.textview_cardview_post);
             mAuthorTextView = (TextView) view.findViewById(R.id.textview_cardview_author);
+            mExcerptTextView = (TextView)view.findViewById(R.id.textview_excerpt);
+            mDateTextView = (TextView)view.findViewById(R.id.textview_date_post);
         }
     }
     /**
@@ -76,6 +78,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         Glide.with(mContext).load(mPosts.get(i).getThumbnailUrl())
                 .centerCrop().into(viewHolder.mImageView);
         viewHolder.mTitleTextView.setText(mPosts.get(i).getTitle());
+        viewHolder.mExcerptTextView.setText(mPosts.get(i).getExcerpt());
+        viewHolder.mDateTextView.setText(mPosts.get(i).getDate());
         if(mPosts.get(i).getAuthor() == null)
             viewHolder.mAuthorTextView.setText("Anonymous");
         else

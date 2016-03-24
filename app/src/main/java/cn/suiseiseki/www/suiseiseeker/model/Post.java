@@ -16,6 +16,7 @@ public class Post {
     private String mDate; // The Date of Post(into String)
     private String mAuthor;
     private String mUrl;
+    private String mExcerpt;
     private int mId; // The Id of Post
     private int mCommentCount;
     private ArrayList<String> mCategories; // One Post may belong to several Categories.
@@ -128,6 +129,14 @@ public class Post {
 
     public void setViewCount(String viewCount) {
         mViewCount = viewCount;
+    }
+
+    public String getExcerpt() {
+        return mExcerpt;
+    }
+
+    public void setExcerpt(String excerpt) {
+        mExcerpt = excerpt;
     }
 
 }

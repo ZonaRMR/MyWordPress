@@ -7,7 +7,7 @@
     android:clickable="true"
     android:layout_margin="5dp"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/CardBackground"
+    app:cardBackgroundColor="@color/While"
     app:cardCornerRadius = "12dp"
     app:cardElevation = "6dp"
     android:id="@+id/card_view"
@@ -19,29 +19,43 @@
         android:padding="9dp">
         <!--The Thumbnail image before the Post-->
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:id="@+id/thumbnail_imageview_cardview"
             android:layout_alignParentStart="true"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="10dp"
             />
-        <!--Post Title-->
+        <!--The Title-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:textSize="16dp"
             android:id="@+id/textview_cardview_post"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/thumbnail_imageview_cardview"
+            android:layout_below="@id/thumbnail_imageview_cardview"
             />
         <!--Author Name-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textview_cardview_author"
-            android:layout_alignBottom="@+id/thumbnail_imageview_cardview"
-            android:layout_alignParentEnd="true"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:layout_toEndOf="@id/thumbnail_imageview_cardview"
+            android:textColor="@color/RedText"
+            android:textSize="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:id="@+id/textview_excerpt"
+            android:layout_below="@id/textview_cardview_post"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview_date_post"
+            android:textSize="9dp"
+            android:layout_below="@id/textview_excerpt"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

@@ -140,7 +140,7 @@ public class PostFragment extends Fragment {
                 mWebView.getSettings().setJavaScriptEnabled(true);
                 mWebView.setWebChromeClient(new WebChromeClient());
                 // Loading html data
-                mWebView.loadData(html, "text/html; charset=UTF-8", null);
+                mWebView.loadDataWithBaseURL("",html, "text/html", "utf-8", null);
 
                 //Reset Action Bar and expand Toolbar
                 ((MainActivity) getActivity()).setSupportActionBar(mToolbar);

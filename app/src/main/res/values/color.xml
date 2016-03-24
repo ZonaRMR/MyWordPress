@@ -4,4 +4,7 @@
     <color name="MainColor">#669FC3</color>
     <color name="colorAccent">#33FFFF</color>
     <color name="CardBackground">#424242</color>
+    <color name="RedText">#FF8888</color>
+    <color name="While">#FFFFFF</color>
+    <color name="Light2">#FFF0F5</color>
 </resources>

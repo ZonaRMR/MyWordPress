@@ -143,6 +143,10 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
             {
                 mSearchView.requestFocus();
             }
+            case R.id.search_menu_item_add_action:
+            {
+
+            }
         }
         return true;
     }
