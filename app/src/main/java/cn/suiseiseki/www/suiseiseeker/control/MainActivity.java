@@ -16,7 +16,7 @@ import cn.suiseiseki.www.suiseiseeker.model.Post;
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
  * Must extends AppCompatActivity
  */
-public class MainActivity extends AppCompatActivity implements RecyclerViewFragment.PostListListener,CoordinatorFragment.Callback,SearchViewFragment.onHomePressed{
+public class MainActivity extends AppCompatActivity implements RecyclerViewFragment.PostListListener,CoordinatorFragment.Callback,SearchViewFragment.onHomePressed,PostFragment.onPostListener{
 
     private FragmentManager mFragmentManager;
 
@@ -74,6 +74,4 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
            mCoordinatorFragment.resetActionBar();
         }
     }
-
-
 }
