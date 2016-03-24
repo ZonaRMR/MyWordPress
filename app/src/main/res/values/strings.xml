@@ -9,4 +9,7 @@
     <string name="menu_search">Search</string>
     <string name="search_hint">Please enter your search here</string>
     <string name="search_result">Search Result for</string>
+    <string name="edit_post">Edit</string>
+    <string name="share_post">Share</string>
+    <string name="delete_this_post">Delete</string>
 </resources>

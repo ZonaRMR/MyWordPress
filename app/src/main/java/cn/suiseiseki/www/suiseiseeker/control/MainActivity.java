@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
     private FragmentManager mFragmentManager;
 
     private final static String TAG = MainActivity.class.getSimpleName();
-    private final static String COR_LAYOUT_TAG = "CoordinatorFragment";
+    private final static String COR_TAG = "CoordinatorFragment";
+    private final static String POST_TAG = "PostFragment";
 
     /* The Fragments that control */
     private CoordinatorFragment mCoordinatorFragment;
-    private SearchViewFragment mSearchViewFragment;
+    private SearchViewFragment mSearchViewFragment = new SearchViewFragment();
+    private PostFragment mPostFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -34,13 +36,48 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         setContentView(R.layout.main_activity);
         mFragmentManager = getSupportFragmentManager();
         mCoordinatorFragment = new CoordinatorFragment();
-        mFragmentManager.beginTransaction().add(R.id.container,mCoordinatorFragment).commit();
+        mPostFragment = new PostFragment();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        // add Fragment by TAG, instead of by ID;
+        fragmentTransaction.add(android.R.id.content,mCoordinatorFragment,COR_TAG);
+        fragmentTransaction.add(android.R.id.content,mPostFragment,POST_TAG);
+        fragmentTransaction.hide(mPostFragment);
+        fragmentTransaction.commit();
     }
     /**
      * When a post in the List is selected
      */
     @Override
-    public void onPostSelected(Post post, boolean isSearch) {};
+    public void onPostSelected(Post post, boolean isSearch)
+    {
+        // find the post Fragment
+        mPostFragment = (PostFragment)getSupportFragmentManager().findFragmentByTag(POST_TAG);
+        // build an arguments
+        Bundle args = new Bundle();
+        args.putInt(PostFragment.ARG_ID, post.getId());
+        args.putString(PostFragment.ARG_AUTHOR, post.getAuthor());
+        args.putString(PostFragment.ARG_IMAGEURL,post.getFeaturedImageUrl());
+        args.putString(PostFragment.ARG_URL, post.getUrl());
+        args.putString(PostFragment.ARG_CONTENT, post.getContent());
+        args.putString(PostFragment.ARG_DATE,post.getDate());
+        args.putString(PostFragment.ARG_TITLE, post.getTitle());
+        // Set the "UI" arguments
+        mPostFragment.setUIArguments(args);
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        if(isSearch)
+        {
+            fragmentTransaction.hide(mSearchViewFragment);
+        }
+        else
+        {
+            fragmentTransaction.hide(mCoordinatorFragment);
+        }
+        fragmentTransaction.show(mPostFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    };
     /**
      * Callback from CoordinatorFragment
      * Handle Search Event
@@ -65,6 +102,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
     public void onHomePressed() {
         resetActionBarIfApplicable();
         mFragmentManager.popBackStack();
+    }
+    @Override
+    public void onBackPressed() {
+        resetActionBarIfApplicable();
+        super.onBackPressed();
     }
     /**
      * Reset CoordinatorLayoutFragment's ActionBar if necessary

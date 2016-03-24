@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id = "@+id/menu_post"
+    >
+    <item android:id="@+id/edit_post_item"
+          android:title= "@string/edit_post"
+          android:icon="@drawable/ic_attach_file_black_24dp"
+          android:orderInCategory="0"
+          app:showAsAction = "always"/>
+    <item
+        android:id="@+id/share_post_item"
+        android:title = "@string/share_post"
+        android:icon="@drawable/ic_folder_shared_black_24dp"
+        android:orderInCategory="1"
+        app:showAsAction = "always"/>
+    <item
+        android:id="@+id/delete_post_item"
+        android:title = "@string/delete_this_post"
+        android:icon ="@drawable/ic_clear_black_24dp"
+        android:orderInCategory="2"
+        app:showAsAction = "always"/>
+
+
+
+</menu>
