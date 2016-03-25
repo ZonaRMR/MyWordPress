@@ -31,6 +31,7 @@ import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
 import cn.suiseiseki.www.suiseiseeker.model.MyRecyclerViewAdapter;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
+import cn.suiseiseki.www.suiseiseeker.tools.MyJSONBuilder;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
@@ -105,7 +106,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
     public static RecyclerViewFragment newInstance(String query)
     {
         Bundle arguments = new Bundle();
-        arguments.putString(QUERY,query);
+        arguments.putString(QUERY, query);
         RecyclerViewFragment fragment = new RecyclerViewFragment();
         fragment.setArguments(arguments);
         return  fragment;
@@ -309,6 +310,26 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         request.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         CoreControl.getInstance().addToRequestQueue(request,TAG);
+    }
+
+    /**
+     * get a Nonce from Wordpress to handle edit/add action
+     */
+    private void getNonce()
+    {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Settings.NONCE_URL,null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("test",response.optString("nonce"));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("test",error.toString());
+
+            }
+        });
+        CoreControl.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
 

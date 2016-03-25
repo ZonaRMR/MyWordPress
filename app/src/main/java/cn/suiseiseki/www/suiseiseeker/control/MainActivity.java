@@ -1,16 +1,15 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import org.json.JSONObject;
 
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
+
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
@@ -23,11 +22,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
     private final static String TAG = MainActivity.class.getSimpleName();
     private final static String COR_TAG = "CoordinatorFragment";
     private final static String POST_TAG = "PostFragment";
+    String d;
 
     /* The Fragments that control */
     private CoordinatorFragment mCoordinatorFragment;
     private SearchViewFragment mSearchViewFragment = new SearchViewFragment();
     private PostFragment mPostFragment;
+    JSONObject temp;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -40,10 +41,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         // add Fragment by TAG, instead of by ID;
         fragmentTransaction.add(android.R.id.content,mCoordinatorFragment,COR_TAG);
-        fragmentTransaction.add(android.R.id.content,mPostFragment,POST_TAG);
+        fragmentTransaction.add(android.R.id.content, mPostFragment, POST_TAG);
         fragmentTransaction.hide(mPostFragment);
         fragmentTransaction.commit();
     }
+
     /**
      * When a post in the List is selected
      */
