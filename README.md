@@ -24,6 +24,8 @@ A android phone :) ,you may edit the minsdk to support lower version
 ##When you start,you may edit the "Setting" class to configure your own URL to connect to your servers.
 ##不要忘记在setting这个类里修改URL，如果你不喜欢指向我的个人网站
 
+![](http://115.159.109.25/%22wp-content/uploads%22/2016/03/QQ%E6%88%AA%E5%9B%BE20160325171956.png)
+
 ##The next plan:
 
 The function of "add a post" ,"update the post" and "delete a post"
@@ -34,5 +36,6 @@ Rewrite with Okhttp to handle HTTP request
 
 Add "Comment" module
 增加“评论”模块
+
 
 ##Anyway, public pull request is accepted :)
