@@ -14,10 +14,12 @@ AppCompat material design to support lower sdk version
 
 ##To start you need: 
 ##你可能需要：
+
 A wordPress site that has JSON API WordPress plugin
 一个wordPress网站并且安装JSON API插件
+
 A android phone :) ,you may edit the minsdk to support lower version
-一只Android智能手机
+一只Android智能手机,你可以修改minsdk去兼容，目前默认版本为4.4
 
 ##When you start,you may edit the "Setting" class to configure your own URL to connect to your servers.
 ##不要忘记在setting这个类里修改URL，如果你不喜欢指向我的个人网站
