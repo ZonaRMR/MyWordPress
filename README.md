@@ -3,9 +3,13 @@ Suiseiseeker is a android client to visit the blog website bulid on Wordpress
 这是一个可以访问基于wordpress建站的博客的Android客户端
 
 ##Features:
+
 Use volley to handle asynchronous HTTP request
+
 CoordinatorLayout/AppBarLayout to respond gesture action
+
 Use Ordinary JSON Parser to get date from server
+
 AppCompat material design to support lower sdk version
 
 ##To start you need: 
