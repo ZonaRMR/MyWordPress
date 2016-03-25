@@ -25,10 +25,14 @@ A android phone :) ,you may edit the minsdk to support lower version
 ##不要忘记在setting这个类里修改URL，如果你不喜欢指向我的个人网站
 
 ##The next plan:
+
 The function of "add a post" ,"update the post" and "delete a post"
 增加“写文章”“更新文章”“删文章”功能
+
 Rewrite with Okhttp to handle HTTP request
 用Okhttp去处理网络异步
+
 Add "Comment" module
 增加“评论”模块
+
 ##Anyway, public pull request is accepted :)
