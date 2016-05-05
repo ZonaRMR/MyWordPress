@@ -1,6 +1,9 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
@@ -9,6 +12,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,7 +25,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.model.Post;
+import cn.suiseiseki.www.suiseiseeker.model.PostProvider;
+import cn.suiseiseki.www.suiseiseeker.tools.DbOpenHelper;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/23.
@@ -45,6 +55,7 @@ public class PostFragment extends Fragment {
     private String mUrl;
     private String mFeaturedImageurl;
     /* The Extra / argument */
+    final static String POST = "postfragment.post";
     final static String ARG_ID = "postfragment.id";
     final static String ARG_TITLE = "postfragment.title";
     final static String ARG_URL = "postfragment.url";
@@ -105,21 +116,31 @@ public class PostFragment extends Fragment {
      *  Cannot reach bundle when fragment was already existed,we have to do it in UI thread.
      */
     public void setUIArguments(final Bundle args)
-    {
+    {;
         Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
                 // clear the content by load empty html
                 mWebView.loadData("", "text/html; charset=UTF-8", null);
                 featuredImageView.setImageBitmap(null);
-                // get data from arguments
-                id = args.getInt(ARG_ID);
-                mTitle = args.getString(ARG_TITLE);
-                String date = args.getString(ARG_DATE);
-                String author = args.getString(ARG_AUTHOR);
-                mContent = args.getString(ARG_CONTENT);
-                mUrl = args.getString(ARG_URL);
-                mFeaturedImageurl = args.getString(ARG_IMAGEURL);
+                /** get data from args(old way) */
+ //                id = args.getInt(ARG_ID);
+//                mTitle = args.getString(ARG_TITLE);
+//                String date = args.getString(ARG_DATE);
+//                String author = args.getString(ARG_AUTHOR);
+//                mContent = args.getString(ARG_CONTENT);
+//                mUrl = args.getString(ARG_URL);
+//                mFeaturedImageurl = args.getString(ARG_IMAGEURL);
+                /** get data by Parcelable Object */
+                final Post temp = args.getParcelable(POST);
+                queryFromPostProvider(temp);
+                id=temp.getId();
+                mTitle = temp.getTitle();
+                String date = temp.getDate();
+                String author = temp.getAuthor();
+                mContent = temp.getContent();
+                mUrl = temp.getUrl();
+                mFeaturedImageurl = temp.getFeaturedImageUrl();
 
                 // download featured image
                 Glide.with(PostFragment.this)
@@ -153,10 +174,19 @@ public class PostFragment extends Fragment {
                     public void run() {
                         mNestedScrollView.smoothScrollTo(0, 0);
                     }
-                },666);
+                }, 666);
+                // save post to database
+//                Thread thread = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        savePost(temp);
+//                    }
+//                });
+//                thread.start();
             }
         }; // The define of Runnable ends
         getActivity().runOnUiThread(myRunnable);
+
     }
 
     /**
@@ -190,6 +220,39 @@ public class PostFragment extends Fragment {
             case R.id.share_post_item: return true;
             case R.id.delete_post_item: return true;
             default: return super.onOptionsItemSelected(item);
+        }
+    }
+    /**
+     * Query post data from PostProvider,May use when off-line
+     */
+    private void queryFromPostProvider(Post post)
+    {
+        Uri uri = PostProvider.POST_CONTENT_URI;
+        getActivity().getContentResolver().query(uri,new String[]{"_id"},null,null,null);
+    }
+    /**
+     * Save Post data to Database
+     */
+    public void savePost(Post post)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream objectoutput = new ObjectOutputStream(byteArrayOutputStream);
+            objectoutput.writeObject(post);
+            objectoutput.flush();
+            byte[] data = byteArrayOutputStream.toByteArray();
+            objectoutput.close();
+            byteArrayOutputStream.close();
+            Uri postUri = PostProvider.POST_CONTENT_URI;
+            ContentValues values = new ContentValues();
+            values.put("_id", post.getId());
+            values.put("post", data);
+            getActivity().getContentResolver().insert(postUri, values);
+            Log.d(TAG,"post saved to database");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

@@ -18,12 +18,18 @@
         android:icon="@mipmap/su" android:theme="@style/Sui.Theme">
         <activity android:name="cn.suiseiseki.www.suiseiseeker.control.MainActivity"
                   android:screenOrientation="portrait"
+                  android:process = ":remote"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="cn.suiseiseki.www.suiseiseeker.postprovider"
+            android:name=".model.PostProvider"
+            android:permission="cn.suiseiseki.www.Provider"
+            android:process=":provider"/>
 
     </application>
 

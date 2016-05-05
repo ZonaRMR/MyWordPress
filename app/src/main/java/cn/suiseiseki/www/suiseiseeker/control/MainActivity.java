@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 
@@ -16,6 +18,8 @@ import cn.suiseiseki.www.suiseiseeker.model.Post;
  * Must extends AppCompatActivity
  */
 public class MainActivity extends AppCompatActivity implements RecyclerViewFragment.PostListListener,CoordinatorFragment.Callback,SearchViewFragment.onHomePressed,PostFragment.onPostListener{
+
+    private static final long serialVersionUID = 511124199211281219L;
 
     private FragmentManager mFragmentManager;
 
@@ -56,13 +60,16 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         mPostFragment = (PostFragment)getSupportFragmentManager().findFragmentByTag(POST_TAG);
         // build an arguments
         Bundle args = new Bundle();
-        args.putInt(PostFragment.ARG_ID, post.getId());
-        args.putString(PostFragment.ARG_AUTHOR, post.getAuthor());
-        args.putString(PostFragment.ARG_IMAGEURL,post.getFeaturedImageUrl());
-        args.putString(PostFragment.ARG_URL, post.getUrl());
-        args.putString(PostFragment.ARG_CONTENT, post.getContent());
-        args.putString(PostFragment.ARG_DATE,post.getDate());
-        args.putString(PostFragment.ARG_TITLE, post.getTitle());
+        args.putParcelable(PostFragment.POST,post);
+        /** The Old way */
+//        args.putInt(PostFragment.ARG_ID, post.getId());
+//        args.putString(PostFragment.ARG_AUTHOR, post.getAuthor());
+//        args.putString(PostFragment.ARG_IMAGEURL,post.getFeaturedImageUrl());
+//        args.putString(PostFragment.ARG_URL, post.getUrl());
+//        args.putString(PostFragment.ARG_CONTENT, post.getContent());
+//        args.putString(PostFragment.ARG_DATE, post.getDate());
+//        args.putString(PostFragment.ARG_TITLE, post.getTitle());
+
         // Set the "UI" arguments
         mPostFragment.setUIArguments(args);
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();

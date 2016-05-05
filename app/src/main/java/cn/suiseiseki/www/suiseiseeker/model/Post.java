@@ -1,12 +1,17 @@
 package cn.suiseiseki.www.suiseiseeker.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
  */
-public class Post {
+public class Post implements Parcelable,Serializable{
+
+    private static final long serialVersionUID = 6128300212L;
 
     private String mTitle;
     private String mContent;
@@ -20,6 +25,56 @@ public class Post {
     private int mId; // The Id of Post
     private int mCommentCount;
     private ArrayList<String> mCategories; // One Post may belong to several Categories.
+
+    public Post(){}
+    /**
+     * Write to Parcel,so it can be delivered by intent or bindler
+     */
+    public int describeContents()
+    {
+        return 0;
+    }
+    public void writeToParcel(Parcel out,int flags)
+    {
+        out.writeString(mTitle);
+        out.writeString(mContent);
+        out.writeString(mThumbnailUrl);
+        out.writeString(mFeaturedImageUrl);
+        out.writeString(mViewCount);
+        out.writeString(mDate);
+        out.writeString(mAuthor);
+        out.writeString(mUrl);
+        out.writeString(mExcerpt);
+        out.writeInt(mId);
+        out.writeInt(mCommentCount);
+        out.writeStringList(mCategories);
+    }
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>()
+    {
+        public Post createFromParcel(Parcel in)
+        {
+            return new Post(in);
+        }
+        public Post[] newArray(int size)
+        {
+            return new Post[size];
+        }
+    };
+    private Post(Parcel in)
+    {
+        setTitle(in.readString());
+        setContent(in.readString());
+        setThumbnailUrl(in.readString());
+        setFeaturedImageUrl(in.readString());
+        setViewCount(in.readString());
+        setDate(in.readString());
+        setAuthor(in.readString());
+        setUrl(in.readString());
+        setExcerpt(in.readString());
+        setId(in.readInt());
+        setCommentCount(in.readInt());
+        in.readStringList(mCategories);
+    }
     /**
      * Override equals to identify two Post,And we must secure same Post has same hashCode
      */
