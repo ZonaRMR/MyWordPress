@@ -4,5 +4,14 @@
              android:layout_height="match_parent"
              android:id="@+id/post_edit_fragment_container"
     >
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Basic"
+        />
+
+
+
+
 
 </FrameLayout>

@@ -17,6 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.SearchView;
 
 import com.android.volley.Response;
@@ -116,6 +118,8 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
         mSearchMenuItem = menu.findItem(R.id.search_menu_item_search_action);
         // The Action View was already defined in the xml
         mSearchView = (SearchView)mSearchMenuItem.getActionView();
+        Animation animation = AnimationUtils.loadAnimation(getActivity(),R.anim.searchview);
+        mSearchView.startAnimation(animation);
         mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         mSearchView.setIconifiedByDefault(false);
         mSearchView.setQueryHint(getString(R.string.search_hint));

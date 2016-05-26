@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:scrollbars="vertical"
             android:id="@+id/recylerView_recycler"
+            android:layoutAnimation="@anim/recycler_view_anim"
             android:layout_height="match_parent"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>

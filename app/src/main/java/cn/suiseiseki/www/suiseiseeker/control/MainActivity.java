@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import org.json.JSONObject;
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         mPostFragment = new PostFragment();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         // add Fragment by TAG, instead of by ID;
-        fragmentTransaction.add(android.R.id.content,mCoordinatorFragment,COR_TAG);
+        fragmentTransaction.add(android.R.id.content, mCoordinatorFragment, COR_TAG);
         fragmentTransaction.add(android.R.id.content, mPostFragment, POST_TAG);
         fragmentTransaction.hide(mPostFragment);
         fragmentTransaction.commit();
@@ -73,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         // Set the "UI" arguments
         mPostFragment.setUIArguments(args);
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
-                android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.enter_post);
+//        Animation animation2 = AnimationUtils.loadAnimation(this,R.anim.enter_post2);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_post,R.anim.enter_post2,R.anim.enter_post,R.anim.enter_post2);
         if(isSearch)
         {
             fragmentTransaction.hide(mSearchViewFragment);
@@ -125,4 +128,5 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
            mCoordinatorFragment.resetActionBar();
         }
     }
+
 }

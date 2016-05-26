@@ -13,4 +13,5 @@
     <string name="share_post">Share</string>
     <string name="delete_this_post">Delete</string>
     <string name="add_post">Write a Post</string>
+    <string name="tickertext">Hello world</string>
 </resources>

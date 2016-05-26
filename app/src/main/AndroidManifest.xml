@@ -18,7 +18,7 @@
         android:icon="@mipmap/su" android:theme="@style/Sui.Theme">
         <activity android:name="cn.suiseiseki.www.suiseiseeker.control.MainActivity"
                   android:screenOrientation="portrait"
-                  android:process = ":remote"
+                  android:launchMode="singleInstance"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
