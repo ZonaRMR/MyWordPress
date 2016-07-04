@@ -312,25 +312,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         CoreControl.getInstance().addToRequestQueue(request,TAG);
     }
 
-    /**
-     * get a Nonce from Wordpress to handle edit/add action
-     */
-    private void getNonce()
-    {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Settings.NONCE_URL,null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("test",response.optString("nonce"));
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("test",error.toString());
 
-            }
-        });
-        CoreControl.getInstance().addToRequestQueue(jsonObjectRequest);
-    }
 
 
 }

@@ -7,10 +7,7 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,10 +27,8 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.RemoteViews;
 
 import com.bumptech.glide.Glide;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -41,7 +36,7 @@ import java.io.ObjectOutputStream;
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 import cn.suiseiseki.www.suiseiseeker.model.PostProvider;
-import cn.suiseiseki.www.suiseiseeker.tools.DbOpenHelper;
+import cn.suiseiseki.www.suiseiseeker.tools.MyImageLoader.ImageResizer;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/23.
@@ -269,26 +264,9 @@ public class PostFragment extends Fragment {
     /**
      * set a notification
      */
-    public void setNotify()
-    {
-        Notification notification = new Notification();
-        notification.icon = R.drawable.notify_purple;
-        notification.tickerText = getString(R.string.tickertext);
-        notification.when = System.currentTimeMillis();
-        notification.flags = Notification.FLAG_AUTO_CANCEL;
-        RemoteViews remoteViews = new RemoteViews(getActivity().getPackageName(),R.layout.notification);
-        remoteViews.setTextViewText(R.id.notification_textview,mTitle);
-        remoteViews.setImageViewResource(R.id.notification_imageview, R.drawable.notify_purple);
-        PendingIntent pendingIntent1 = PendingIntent.getActivity(getActivity(),0,new Intent(getActivity(),MainActivity.class),PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.notification,pendingIntent1);
-        notification.contentView = remoteViews;
-        notification.contentIntent = pendingIntent1;
-        NotificationManager manager = (NotificationManager)getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(2,notification);
-    }
     public void setNotify2()
     {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.notify_purple);
+        Bitmap bitmap = new ImageResizer().decodeSampledBitmapFromResource(getResources(),R.drawable.cute_purple,200,200);
         Notification notification = new Notification.Builder(getActivity()).setAutoCancel(false).setContentTitle(getString(R.string.app_name))
                 .setContentText(mTitle).setSmallIcon(R.mipmap.su).setLargeIcon(bitmap).setWhen(System.currentTimeMillis()).build();
         notification.contentIntent =  PendingIntent.getActivity(getActivity(), 0, new Intent(getActivity(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);

@@ -25,4 +25,14 @@ public class Category {
      */
     private int mId;
     private String mName;
+
+    public String getSlugName() {
+        return slugName;
+    }
+
+    public void setSlugName(String slagName) {
+        this.slugName = slagName;
+    }
+
+    private String slugName;
 }

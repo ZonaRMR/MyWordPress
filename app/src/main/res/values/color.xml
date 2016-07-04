@@ -7,4 +7,7 @@
     <color name="RedText">#FF8888</color>
     <color name="While">#FFFFFF</color>
     <color name="Light2">#FFF0F5</color>
+    <color name="lightdark">#666666</color>
+    <color name="seagreen">#2E8B57</color>
+    <color name="Lightpink">#F08080</color>
 </resources>

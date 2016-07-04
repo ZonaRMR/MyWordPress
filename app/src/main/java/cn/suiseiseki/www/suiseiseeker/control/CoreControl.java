@@ -11,6 +11,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 import cn.suiseiseki.www.suiseiseeker.tools.LruBitmapCache;
+import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/16.
@@ -75,6 +76,13 @@ public class CoreControl extends Application{
     {
         if(mRequestQueue != null)
             getRequestQueue().cancelAll(tag);
+    }
+    /**
+     * Set the Nonce
+     */
+    public void setNonce(String nonce)
+    {
+        Settings.Nonce = nonce;
     }
 
 

@@ -11,6 +11,7 @@ public class Settings {
     public static final String CATEGORY_INDEX_URL = MAIN_URL + "?json=get_category_index";
     public static final String DEFAULT_THUMBNAIL_URL = "http://www.iconpng.com/png/freepikons-business/business96.png";
     public static final String NONCE_URL = MAIN_URL + "api/get_nonce/?controller=posts&method=create_post";
+    public static final String CREATE_POST_URL = MAIN_URL + "api/create_post/";
     /**
      * The Nonce, DO NOT EDIT OR EAT!
      */

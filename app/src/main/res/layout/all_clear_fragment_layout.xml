@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+              android:layout_width="match_parent"
+                android:gravity="center"
+              android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_clear_fragment_textview"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:text="@string/all_clear_confirm"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/all_clear_fragment_textview"
+        android:layout_marginStart="20dp"
+        android:id="@+id/clearall_yes_button"
+        android:layout_below="@id/all_clear_fragment_textview"
+        android:text="@string/yes"
+        android:layout_marginTop="20dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clearall_no_button"
+        android:layout_alignBottom="@id/clearall_yes_button"
+        android:layout_toEndOf="@id/clearall_yes_button"
+        android:text="@string/No"
+        android:layout_alignEnd="@id/all_clear_fragment_textview"
+        android:layout_marginEnd="20dp"
+        />
+
+</RelativeLayout>

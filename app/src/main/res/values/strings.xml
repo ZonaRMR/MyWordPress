@@ -14,4 +14,13 @@
     <string name="delete_this_post">Delete</string>
     <string name="add_post">Write a Post</string>
     <string name="tickertext">Hello world</string>
+    <string name="title">Title:</string>
+    <string name="write_a_post">Write a Post</string>
+    <string name="author">Author:</string>
+    <string name="choose_a_category">Category:</string>
+    <string name="all_clear">Clear All</string>
+    <string name="commit">Commit!</string>
+    <string name="all_clear_confirm">Are you sure to clear all text?</string>
+    <string name="yes">Yes</string>
+    <string name="No">No</string>
 </resources>

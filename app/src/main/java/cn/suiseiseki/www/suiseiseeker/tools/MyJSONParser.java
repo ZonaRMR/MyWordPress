@@ -38,6 +38,7 @@ public class MyJSONParser {
                 Category category = new Category();
                 category.setName(jsonObject.getString("title"));
                 category.setId(jsonObject.getInt("id"));
+                category.setSlugName(jsonObject.getString("slug"));
                 categoryArrayList.add(category);
             }
             return categoryArrayList;
@@ -91,6 +92,24 @@ public class MyJSONParser {
             e.printStackTrace();
             return null;
         }
+    }
+    /**
+     * Parse Nonce Informations
+     */
+    public static String ParseNonce(JSONObject jsonObject)
+    {
+        String a = null;
+        try
+        {
+            a = jsonObject.getString("nonce");
+            Log.d("JSON","get a nonce:"+a);
+        }
+        catch (Exception e)
+        {
+            Log.d("JSON","Exception in getting a nonce");
+            e.printStackTrace();
+        }
+        return a;
     }
 
 

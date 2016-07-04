@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.postedit.PostEditActivity;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
 import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
@@ -149,7 +151,9 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
             }
             case R.id.search_menu_item_add_action:
             {
-
+                Intent intent = new Intent(getActivity(),PostEditActivity.class);
+                getActivity().startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fade_in_slow,R.anim.fade_out_slow);
             }
         }
         return true;
