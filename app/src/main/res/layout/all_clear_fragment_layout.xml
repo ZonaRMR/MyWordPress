@@ -4,6 +4,7 @@
               android:layout_width="match_parent"
                 android:gravity="center"
               android:layout_height="match_parent">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,5 +31,7 @@
         android:layout_alignEnd="@id/all_clear_fragment_textview"
         android:layout_marginEnd="20dp"
         />
+
+
 
 </RelativeLayout>

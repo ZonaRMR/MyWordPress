@@ -27,7 +27,12 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
@@ -37,6 +42,8 @@ import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 import cn.suiseiseki.www.suiseiseeker.model.PostProvider;
 import cn.suiseiseki.www.suiseiseeker.tools.MyImageLoader.ImageResizer;
+import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
+import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/23.
@@ -98,6 +105,7 @@ public class PostFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
+        CoreControl.getNonce(2);
     }
     /**
      * The onCreateView() Method,initialize the layout
@@ -223,8 +231,11 @@ public class PostFragment extends Fragment {
     {
         switch(item.getItemId()){
             case android.R.id.home: mCallback.onHomePressed();return true;
-            case R.id.share_post_item: return true;
-            case R.id.delete_post_item: return true;
+            case R.id.share_post_item:
+                return true;
+            case R.id.delete_post_item:
+                    deleteThisPost();
+                    return true;
             default: return super.onOptionsItemSelected(item);
         }
     }
@@ -254,7 +265,8 @@ public class PostFragment extends Fragment {
             values.put("_id", post.getId());
             values.put("post", data);
             getActivity().getContentResolver().insert(postUri, values);
-            Log.d(TAG,"post saved to database");
+            Log.d(TAG,"post s" +
+                    "aved to database");
         }
         catch (Exception e)
         {
@@ -272,5 +284,28 @@ public class PostFragment extends Fragment {
         notification.contentIntent =  PendingIntent.getActivity(getActivity(), 0, new Intent(getActivity(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationManager manager = (NotificationManager)getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(2,notification);
+    }
+
+    /**
+     * Delete the Post
+     */
+    private void deleteThisPost()
+    {
+        StringBuilder mStringBuilder =new StringBuilder();
+        mStringBuilder.append(Settings.DELETE_POST_URL);
+        mStringBuilder.append("?nonce=").append(Settings.Nonce_delete).append("&post_id=").append(id);
+        StringRequest mStringRequest = new StringRequest(Request.Method.POST, mStringBuilder.toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getActivity(),getString(R.string.success),Toast.LENGTH_SHORT);
+                mCallback.onHomePressed();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG,"Volley Error while deleting post");
+            }
+        });
+        CoreControl.getInstance().addToRequestQueue(mStringRequest);
     }
 }

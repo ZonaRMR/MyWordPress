@@ -23,12 +23,15 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
@@ -145,23 +148,35 @@ public class PostEditFragment extends Fragment {
                 mStringBuilder.append("?nonce=");
                 mStringBuilder.append(Settings.Nonce);
                 mStringBuilder.append("&title=");
-                mStringBuilder.append(mTitle.getText().toString());
+                String title = mTitle.getText().toString();
+                mStringBuilder.append(URLEncoder.encode(title));
                 mStringBuilder.append("&author=");
-                mStringBuilder.append(mAuthor.getText().toString());
-                mStringBuilder.append("&content=").append(mContent.getText().toString());
+                String author = mAuthor.getText().toString();
+                mStringBuilder.append(URLEncoder.encode(author));
+                String content = mContent.getText().toString();
+                mStringBuilder.append("&content=").append(URLEncoder.encode(content));
                 String mCategorySlugName = findCategorySlugName((String)spinner.getSelectedItem(),CoordinatorFragment.mCategories);
                 mStringBuilder.append("&categories=").append(mCategorySlugName);
                 mStringBuilder.append("&status=").append("publish");
                 Log.d(TAG,"request:"+mStringBuilder.toString());
-                StringRequest create_post_request = new StringRequest(Request.Method.POST, mStringBuilder.toString(),null,
-                        new Response.ErrorListener() {
+                StringRequest create_post_request = new StringRequest(Request.Method.POST, mStringBuilder.toString(), new Response.Listener<String>() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG,"Volley Error in posting String Request");
+                    public void onResponse(String response) {
+                        Toast.makeText(getActivity(),getString(R.string.success),Toast.LENGTH_SHORT).show();
+                        if(NavUtils.getParentActivityName(getActivity())!=null)
+                        {
+                            NavUtils.navigateUpFromSameTask(getActivity());
+                        }
                     }
-                });
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d(TAG, "Volley Error in posting String Request");
+                            }
+                        });
                 CoreControl.getInstance().addToRequestQueue(create_post_request);
-                Toast.makeText(getActivity(),"haha",Toast.LENGTH_SHORT).show();
+
             }
         });
         // Register a BroadCastReceiver
@@ -224,22 +239,8 @@ public class PostEditFragment extends Fragment {
      */
     private void getNonce()
     {
-        /*********************** The Json request for Nonce *****************/
-        JsonObjectRequest request_nonce_json = new JsonObjectRequest(Request.Method.GET, Settings.NONCE_URL,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        CoreControl.getInstance().setNonce(MyJSONParser.ParseNonce(response));
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("JSON","VolleyError in getting Nonce");
-                    }
-                });
-        CoreControl.getInstance().addToRequestQueue(request_nonce_json);
-        /*********************** The Json request for Nonce *****************/
+        CoreControl.getNonce(1);
     }
+
 
 }
