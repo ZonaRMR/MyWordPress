@@ -123,6 +123,7 @@ public class PostFragment extends Fragment {
         mCoordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.post_coordinatorLayout);
         featuredImageView = (ImageView)v.findViewById(R.id.featuredImage);
         mWebView = (WebView)v.findViewById(R.id.webview);
+        FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         return v;
     }
     /**

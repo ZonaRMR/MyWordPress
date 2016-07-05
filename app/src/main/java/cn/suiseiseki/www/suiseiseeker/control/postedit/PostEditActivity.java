@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/25.
@@ -31,6 +32,7 @@ public class PostEditActivity extends AppCompatActivity implements PostEditFragm
         FragmentTransaction mBeginTransaction = fm.beginTransaction();
         mBeginTransaction.setCustomAnimations(R.anim.enter_post,R.anim.enter_post2,R.anim.enter_post,R.anim.enter_post2);
         mBeginTransaction.add(R.id.post_edit_fragment_container,fragment).commit();
+        FontHelper.applyFont(this,findViewById(R.id.post_edit_fragment_container),"fonts/myfont.ttf");
     }
 
     @Override

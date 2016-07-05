@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
         fragmentTransaction.add(android.R.id.content, mPostFragment, POST_TAG);
         fragmentTransaction.hide(mPostFragment);
         fragmentTransaction.commit();
+
     }
 
     /**

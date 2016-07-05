@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 
 /**
  * Created by Shuikeyi on 2016/7/4.
@@ -25,6 +26,7 @@ public class AllClearDiagFragment extends DialogFragment implements View.OnClick
         Button no = (Button)v.findViewById(R.id.clearall_no_button);
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
+        FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         return v;
     }
 

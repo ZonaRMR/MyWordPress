@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.control.CoordinatorFragment;
 import cn.suiseiseki.www.suiseiseeker.control.CoreControl;
+import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
@@ -117,7 +118,7 @@ public class PostEditFragment extends Fragment {
         View v = inflater.inflate(R.layout.post_edit_fragment,root,false);
         mToolbar = (Toolbar)v.findViewById(R.id.post_edit_toolbar);
         mToolbar.setTitle(getString(R.string.add_post));
-        mToolbar.setSubtitle(getString((R.string.app_name)));
+//        mToolbar.setSubtitle(getString((R.string.app_name)));
         mToolbar.setSubtitleTextColor(getResources().getColor(R.color.seagreen));
         ((PostEditActivity)getActivity()).setSupportActionBar(mToolbar);
         ((PostEditActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -184,6 +185,7 @@ public class PostEditFragment extends Fragment {
         mIntentFilter.addAction(TAG);
         allclear_BR = new MyBroadCastReceiver();
         getActivity().registerReceiver(allclear_BR,mIntentFilter);
+        FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         return v;
     }
 

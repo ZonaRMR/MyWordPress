@@ -105,6 +105,7 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
         mViewPager = (ViewPager)v.findViewById(R.id.viewPager_coordinator);
         // Pre-loading one fragment
         mViewPager.setOffscreenPageLimit(1);
+        FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         return v;
     }
     /**

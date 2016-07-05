@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layoutAnimation="@anim/coordinator_anim"
+    android:id="@+id/coordinator"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context = "cn.suiseiseki.www.suiseiseeker.control.CoordinatorFragment"
                    android:layout_width="match_parent"

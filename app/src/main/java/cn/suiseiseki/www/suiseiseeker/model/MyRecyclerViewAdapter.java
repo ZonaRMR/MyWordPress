@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/17.
@@ -65,6 +66,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item,parent,false);
         mContext = parent.getContext();
+        FontHelper.applyFont(mContext,v,"fonts/myfont.ttf");
         return new ViewHolder(v);
     }
     @Override

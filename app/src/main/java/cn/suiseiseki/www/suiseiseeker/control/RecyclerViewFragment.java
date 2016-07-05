@@ -1,6 +1,7 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -141,6 +142,8 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
         mSwipeRefreshLayout = (SwipeRefreshLayout)v.findViewById(R.id.swipeRefreshLayout_recycler);
         mRecyclerView = (RecyclerView)v.findViewById(R.id.recylerView_recycler);
         mLoadingTextView = (TextView) v.findViewById(R.id.textview_recyler_dialog);
+//        Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/myfont.ttf");
+//        mLoadingTextView.setTypeface(mTypeface);
         mLayoutManager = new LinearLayoutManager(getActivity());
         //pull to refresh listener
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -183,6 +186,7 @@ public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
+        FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         return  v;
     }
     /**
