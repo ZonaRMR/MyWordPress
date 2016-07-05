@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Suiseiseeker</string>
+    <string name="app_name">MyWordPress</string>
     <string name="seek_categories">Seeking......</string>
     <string name="seek_posts">Seeking Posts.....</string>
     <string name="recent_posts">Recent</string>

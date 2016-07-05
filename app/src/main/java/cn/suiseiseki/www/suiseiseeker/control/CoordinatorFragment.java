@@ -148,12 +148,14 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
             case R.id.search_menu_item_search_action:
             {
                 mSearchView.requestFocus();
+                break;
             }
             case R.id.search_menu_item_add_action:
             {
                 Intent intent = new Intent(getActivity(),PostEditActivity.class);
                 getActivity().startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.fade_in_slow,R.anim.fade_out_slow);
+                break;
             }
         }
         return true;
