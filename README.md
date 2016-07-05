@@ -12,6 +12,11 @@ Use Ordinary JSON Parser to get date from server
 
 AppCompat material design to support lower sdk version
 
+##Notice!
+
+My website has temporarily closed the api for "Create a post" or "Delete a post" for security reasons, but you may use the function in other wordpress website that support these two api.
+由于有人乱删我博客，暂时把自己网站的写文和删文API禁止了
+
 ##To start you need: 
 ##你可能需要：
 
