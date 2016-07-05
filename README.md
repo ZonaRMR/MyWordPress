@@ -1,5 +1,5 @@
-# Suiseiseeker
-Suiseiseeker is a android client to visit the blog website bulid on Wordpress
+# MyWordPress
+MyWordPress is a android client to visit the blog website bulid on Wordpress
 这是一个可以访问基于wordpress建站的博客的Android客户端
 
 ##Features:
@@ -28,11 +28,9 @@ A android phone :) ,you may edit the minsdk to support lower version
 
 ##The next plan:
 
-The function of "add a post" ,"update the post" and "delete a post"
-增加“写文章”“更新文章”“删文章”功能
+The function of "add a post"  and "delete a post" (finished)
+增加“写文章” “删文章”功能(已完成)
 
-Rewrite with Okhttp to handle HTTP request
-用Okhttp去处理网络异步
 
 Add "Comment" module
 增加“评论”模块
