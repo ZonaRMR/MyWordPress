@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
+import cn.suiseiseki.www.suiseiseeker.control.PostFragment;
 
 /**
  * Created by Shuikeyi on 2016/7/4.
@@ -50,7 +51,7 @@ public class AllClearDiagFragment extends DialogFragment implements View.OnClick
         }
     }
 
-    private void Back()
+    protected void Back()
     {
         FragmentManager FM = getActivity().getSupportFragmentManager();
         FM.beginTransaction().remove(this).commit();

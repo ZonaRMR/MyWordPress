@@ -24,4 +24,5 @@
     <string name="yes">Yes</string>
     <string name="No">No</string>
     <string name="success">Success!</string>
+    <string name="delete_post_confirm">Are you sure to delete this port?</string>
 </resources>

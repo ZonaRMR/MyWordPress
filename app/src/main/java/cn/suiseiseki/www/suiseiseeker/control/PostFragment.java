@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,7 +52,10 @@ import cn.suiseiseki.www.suiseiseeker.tools.Settings;
  */
 public class PostFragment extends Fragment {
 
-    private final static String TAG = "PostFragment";
+    public final static String TAG = "PostFragment";
+    public final static String DELETE_FLAG = "delete_me";
+    MyBroadCastReceiver delete_receiver;
+
 
     /* The View */
     private Toolbar mToolbar;
@@ -83,6 +88,7 @@ public class PostFragment extends Fragment {
     public interface onPostListener
     {
         void onHomePressed();
+        void onDeletePressed();
     }
     private onPostListener mCallback;
     @Override
@@ -95,6 +101,11 @@ public class PostFragment extends Fragment {
     {
         super.onDetach();
         mCallback = null;
+    }
+    public void onDestroy()
+    {
+        super.onDestroy();
+        getActivity().unregisterReceiver(delete_receiver);
     }
     /**
      * The onCreate Method
@@ -124,6 +135,10 @@ public class PostFragment extends Fragment {
         featuredImageView = (ImageView)v.findViewById(R.id.featuredImage);
         mWebView = (WebView)v.findViewById(R.id.webview);
         FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
+        IntentFilter mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction(TAG);
+        delete_receiver = new MyBroadCastReceiver();
+        getActivity().registerReceiver(delete_receiver,mIntentFilter);
         return v;
     }
     /**
@@ -235,7 +250,7 @@ public class PostFragment extends Fragment {
             case R.id.share_post_item:
                 return true;
             case R.id.delete_post_item:
-                    deleteThisPost();
+                    mCallback.onDeletePressed();
                     return true;
             default: return super.onOptionsItemSelected(item);
         }
@@ -308,5 +323,16 @@ public class PostFragment extends Fragment {
             }
         });
         CoreControl.getInstance().addToRequestQueue(mStringRequest);
+    }
+
+    class MyBroadCastReceiver extends BroadcastReceiver
+    {
+        @Override
+        public void onReceive(Context context,Intent intent)
+        {
+           int i = intent.getIntExtra(DELETE_FLAG,0);
+            if(i == 1)
+                deleteThisPost();
+        }
     }
 }

@@ -1,6 +1,7 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.postedit.DeleteDiagFragment;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 
 
@@ -115,6 +117,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
     public void onHomePressed() {
         resetActionBarIfApplicable();
         mFragmentManager.popBackStack();
+    }
+    @Override
+    public void onDeletePressed()
+    {
+        DeleteDiagFragment mDeleteDiagFragment = new DeleteDiagFragment();
+        mDeleteDiagFragment.show(mFragmentManager,null);
     }
     @Override
     public void onBackPressed() {
