@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -134,6 +135,7 @@ public class PostFragment extends Fragment {
         mCoordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.post_coordinatorLayout);
         featuredImageView = (ImageView)v.findViewById(R.id.featuredImage);
         mWebView = (WebView)v.findViewById(R.id.webview);
+        mWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         FontHelper.applyFont(getActivity(),v,"fonts/myfont.ttf");
         IntentFilter mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(TAG);
@@ -145,7 +147,7 @@ public class PostFragment extends Fragment {
      *  Cannot reach bundle when fragment was already existed,we have to do it in UI thread.
      */
     public void setUIArguments(final Bundle args)
-    {;
+    {
         Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
