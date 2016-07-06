@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">MyWordPress</string>
+    <string name="seek_categories">读取目录中......</string>
+    <string name="seek_posts">读取中.....</string>
+    <string name="recent_posts">最近的</string>
+    <string name="failed_load_posts">读取失败，请检查网络是否连通</string>
+    <string name="retry">重试</string>
+    <string name="error_load_categories">加载分类目录失败</string>
+    <string name="menu_search">搜索</string>
+    <string name="search_hint">请输入搜索内容</string>
+    <string name="search_result">搜索结果:</string>
+    <string name="edit_post">编辑</string>
+    <string name="share_post">分享</string>
+    <string name="delete_this_post">删除</string>
+    <string name="add_post">发表文章</string>
+    <string name="tickertext">Hello world</string>
+    <string name="title">标题：</string>
+    <string name="write_a_post">发表文章</string>
+    <string name="author">作者:</string>
+    <string name="choose_a_category">分类:</string>
+    <string name="all_clear">全部清除</string>
+    <string name="commit">发布!</string>
+    <string name="all_clear_confirm">确定要清除所有输入内容吗？</string>
+    <string name="yes">好的</string>
+    <string name="No">不！</string>
+    <string name="success">操作成功！</string>
+    <string name="delete_post_confirm">确定要删除本文吗？</string>
+    <string name="title_hint">在这里输入标题</string>
+    <string name="author_hint">作者</string>
+    <string name="content">正文：</string>
+    <string name="content_hint">在这里输入正文</string>
+</resources>

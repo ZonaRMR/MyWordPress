@@ -29,7 +29,7 @@
         android:layout_toEndOf="@id/clearall_yes_button"
         android:text="@string/No"
         android:layout_alignEnd="@id/all_clear_fragment_textview"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="15dp"
         />
 
 
