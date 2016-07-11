@@ -16,7 +16,7 @@ public class Settings {
     public static final String DELETE_POST_URL = MAIN_URL + "api/posts/delete_post/";
     /**
      * The Nonce, DO NOT EDIT OR EAT!
-     * As the AsyncVolley
+     * Fuck the AsyncVolley
      */
     public static String Nonce = null;
     public static String Nonce_delete = null;

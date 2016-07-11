@@ -30,6 +30,7 @@ public class CoreControl extends Application{
      * Of course,we just need singleInstance of CoreControl
      * initialize when created
      */
+    public static int state = 0;
     private static final String TAG = CoreControl.class.getName();
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
