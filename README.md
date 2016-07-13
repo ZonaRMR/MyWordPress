@@ -17,6 +17,8 @@ AppCompat material design to support lower sdk version
 My website has temporarily closed the api for "Create a post" or "Delete a post" for security reasons, but you may use the function in other wordpress website that support these two api.
 由于有人乱删我博客，暂时把自己网站的写文和删文API禁止了
 
+apk direct downloading(May not latest version): https://od.lk/d/MzBfMjMzODExNl8/suiseiseeker.apk
+
 ##To start you need: 
 ##你可能需要：
 
@@ -36,6 +38,8 @@ A android phone :) ,you may edit the minsdk to support lower version
 The function of "add a post"  and "delete a post" (finished)
 增加“写文章” “删文章”功能(已完成)
 
+Add database to keep offline reading
+离线查看功能
 
 Add "Comment" module
 增加“评论”模块
