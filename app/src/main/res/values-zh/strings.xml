@@ -29,4 +29,7 @@
     <string name="author_hint">作者</string>
     <string name="content">正文：</string>
     <string name="content_hint">在这里输入正文</string>
+    <string name="calculator">计算器</string>
+    <string name="calculator_hint">在这里输入你的算式</string>
+    <string name="cal">计算！</string>
 </resources>

@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.calculator.CalculatorActivity;
 import cn.suiseiseki.www.suiseiseeker.control.postedit.PostEditActivity;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
 import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
@@ -156,6 +157,12 @@ public class CoordinatorFragment extends Fragment implements SearchView.OnQueryT
                 Intent intent = new Intent(getActivity(),PostEditActivity.class);
                 getActivity().startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.fade_in_slow,R.anim.fade_out_slow);
+                break;
+            }
+            case R.id.search_menu_item_calculator:
+            {
+                Intent mIntent = new Intent(getActivity(), CalculatorActivity.class);
+                getActivity().startActivity(mIntent);
                 break;
             }
         }

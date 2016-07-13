@@ -29,4 +29,7 @@
     <string name="No">No</string>
     <string name="success">Success!</string>
     <string name="delete_post_confirm">Are you sure to delete this post?</string>
+    <string name="calculator">Calculator</string>
+    <string name="calculator_hint">Input the formula here</string>
+    <string name="cal">Calculate!</string>
 </resources>

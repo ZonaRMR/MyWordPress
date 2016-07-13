@@ -37,6 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".control.calculator.CalculatorActivity"/>
 
         <provider
             android:authorities="cn.suiseiseki.www.suiseiseeker.postprovider"
