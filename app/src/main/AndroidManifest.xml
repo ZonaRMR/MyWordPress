@@ -37,7 +37,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".control.calculator.CalculatorActivity"/>
+        <activity android:name=".control.calculator.CalculatorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".control.MainActivity"/>
+        </activity>
 
         <provider
             android:authorities="cn.suiseiseki.www.suiseiseeker.postprovider"

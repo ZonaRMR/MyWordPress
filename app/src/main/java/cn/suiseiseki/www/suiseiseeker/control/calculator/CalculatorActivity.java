@@ -1,6 +1,7 @@
 package cn.suiseiseki.www.suiseiseeker.control.calculator;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.util.Set;
 import java.util.Stack;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 
 /**
  * Created by Shuikeyi on 2016/7/12.
@@ -32,10 +34,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     public void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
+        View v = findViewById(R.id.calculator_lineaylayout);
         setContentView(R.layout.calculator_layout);
         toolbar = (Toolbar) findViewById(R.id.calculator_toolbar);
+        toolbar.setTitle(getString(R.string.calculator));
         setSupportActionBar(toolbar);
-        getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         inputText =(MaterialEditText)findViewById(R.id.calculator_inputtext);
         suffixTextView =(TextView)findViewById(R.id.calculator_textshow);
         Button calButton = (Button) findViewById(R.id.calculator_cal);
@@ -43,7 +47,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         Button clearButton = (Button) findViewById(R.id.calculator_clear);
         clearButton.setOnClickListener(this);
         resultView = (TextView) findViewById(R.id.result_calculator);
-
+        FontHelper.applyFont(this,v,"fonts/myfont.ttf");
         //** ready to calculate **//
         prepare();
 
@@ -57,20 +61,23 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.calculator_cal:
                 String input = (inputText.getText()).toString();
                 if(isCorrect(input)) {
+                    suffixTextView.setText("The suffix is: "+suffix(input));
                    try {
-                       suffixTextView.setText(suffix(input));
                        String result = Double.toString(calculate(suffix(input)));
                        resultView.setText(result);
-                       sb.delete(0, sb.length());
-                       mStack.clear();
                    }
                    catch (Exception e)
                    {
                        e.printStackTrace();
+                       Toast.makeText(this,"Error in calculation!",Toast.LENGTH_SHORT).show();
+                   }
+                    finally {
+                       mStack.clear();
+                       sb.delete(0,sb.length());
                    }
                 }
                 else {
-                    Toast.makeText(this,"Wrong inout",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.wrong_input),Toast.LENGTH_SHORT).show();
                     sb.delete(0,sb.length());
                     mStack.clear();
                 }
@@ -81,6 +88,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 sb.delete(0,sb.length());
                 mStack.clear();
                 break;
+            case android.R.id.home:
+            {
+                if(NavUtils.getParentActivityName(this)!=null)
+                {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                break;
+            }
         }
     }
 
@@ -93,30 +108,29 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     StringBuilder sb =new StringBuilder();
     private String suffix(String s)
     {
+        s=s+"+0";
         char[] array = s.toCharArray();
         for(int i = 0;i<array.length;i++) {
             char c = array[i];
             switch (c) {
                 case '+':
                 case '-':
-                    sb.append(' ');
                     getOper(c, 1);
                     break;
                 case '*':
                 case '/':
-                    sb.append(' ');
                     getOper(c, 2);
                     break;
                 case '(':
-                    sb.append(' ');
                     mStack.push(c);
                     break;
                 case ')':
-                    sb.append(' ');
                     getParent(c);
                     break;
                 default:
                     sb.append(c);
+                    if(i <= array.length - 2 && charset2.contains(array[i+1]))
+                        sb.append(" ");
                     break;
             }
         }
@@ -127,6 +141,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             }
             return sb.toString();
         }
+
 
     /**
      * if c = ")" need to find responding "("

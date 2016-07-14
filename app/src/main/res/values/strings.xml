@@ -32,4 +32,5 @@
     <string name="calculator">Calculator</string>
     <string name="calculator_hint">Input the formula here</string>
     <string name="cal">Calculate!</string>
+    <string name="wrong_input">Wrong Input!</string>
 </resources>
