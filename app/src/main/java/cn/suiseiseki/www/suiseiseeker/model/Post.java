@@ -1,5 +1,6 @@
 package cn.suiseiseki.www.suiseiseeker.model;
 
+import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
  */
-public class Post implements Parcelable,Serializable{
+public class Post extends BaseObservable implements Parcelable,Serializable{
 
     private static final long serialVersionUID = 6128300212L;
 
@@ -26,6 +27,25 @@ public class Post implements Parcelable,Serializable{
     private int mId; // The Id of Post
     private int mCommentCount;
     private ArrayList<String> mCategories; // One Post may belong to several Categories.
+
+    /**
+     * data binding
+     */
+    @Bindable
+    public String getAuthor() {
+        return mAuthor;
+    }
+
+    @Bindable
+    public String getTitle() {
+        return mTitle;
+    }
+
+    @Bindable
+    public String getDate() {
+        return mDate;
+    }
+
 
     public Post(){}
     /**
@@ -99,15 +119,7 @@ public class Post implements Parcelable,Serializable{
      *
      * Wow a lot of getter and setter
      */
-    @Bindable
-    public String getAuthor() {
-        return mAuthor;
-    }
 
-    @Bindable
-    public String getTitle() {
-        return mTitle;
-    }
 
     public void setAuthor(String author) {
         mAuthor = author;
@@ -137,9 +149,7 @@ public class Post implements Parcelable,Serializable{
         mContent = content;
     }
 
-    public String getDate() {
-        return mDate;
-    }
+
 
     public void setDate(String date) {
         mDate = date;
