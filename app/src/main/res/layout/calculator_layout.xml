@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:theme="@style/Sui.Theme"
               android:layout_width="match_parent"
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:id="@+id/calculator_inputtext"
         android:hint="@string/calculator_hint"
+        app:met_baseColor="@color/RedText"
         android:singleLine="true"
         android:layout_height="wrap_content"/>
     <LinearLayout
@@ -61,9 +63,10 @@
         android:textStyle="italic"/>
 
     <TextView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="40sp"
+        android:textColor="@color/orange"
         android:id="@+id/result_calculator"
         android:layout_gravity="center"/>
 
