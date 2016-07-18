@@ -23,13 +23,8 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.rengwuxian.materialedittext.MaterialEditText;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -37,9 +32,8 @@ import java.util.ArrayList;
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.control.CoordinatorFragment;
 import cn.suiseiseki.www.suiseiseeker.control.CoreControl;
-import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
-import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
 /**

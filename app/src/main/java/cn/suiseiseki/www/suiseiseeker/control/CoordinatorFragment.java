@@ -35,6 +35,7 @@ import cn.suiseiseki.www.suiseiseeker.control.calculator.CalculatorActivity;
 import cn.suiseiseki.www.suiseiseeker.control.postedit.PostEditActivity;
 import cn.suiseiseki.www.suiseiseeker.model.Category;
 import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 

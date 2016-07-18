@@ -1,5 +1,6 @@
 package cn.suiseiseki.www.suiseiseeker.model;
 
+import android.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -28,7 +29,7 @@ public class Post implements Parcelable,Serializable{
 
     public Post(){}
     /**
-     * Write to Parcel,so it can be delivered by intent or bindler
+     * Write to Parcel,so it can be delivered by intent or binder
      */
     public int describeContents()
     {
@@ -98,8 +99,14 @@ public class Post implements Parcelable,Serializable{
      *
      * Wow a lot of getter and setter
      */
+    @Bindable
     public String getAuthor() {
         return mAuthor;
+    }
+
+    @Bindable
+    public String getTitle() {
+        return mTitle;
     }
 
     public void setAuthor(String author) {
@@ -162,9 +169,7 @@ public class Post implements Parcelable,Serializable{
         mThumbnailUrl = thumbnailUrl;
     }
 
-    public String getTitle() {
-        return mTitle;
-    }
+
 
     public void setTitle(String title) {
         mTitle = title;

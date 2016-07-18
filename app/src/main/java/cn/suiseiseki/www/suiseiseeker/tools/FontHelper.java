@@ -1,4 +1,4 @@
-package cn.suiseiseki.www.suiseiseeker.control;
+package cn.suiseiseki.www.suiseiseeker.tools;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -15,18 +15,8 @@ import java.lang.reflect.Field;
  */
 public class FontHelper {
 
-    // -----------------------------------------------------------------------
-    //
-    // Constants
-    //
-    // -----------------------------------------------------------------------
     private static final String TAG = FontHelper.class.getSimpleName();
 
-    // -----------------------------------------------------------------------
-    //
-    // Properties
-    //
-    // -----------------------------------------------------------------------
     /**
      * Apply specified font for all text views (including nested ones) in the specified
      * root view.

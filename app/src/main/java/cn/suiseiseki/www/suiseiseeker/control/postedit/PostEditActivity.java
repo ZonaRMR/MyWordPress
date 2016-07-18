@@ -1,14 +1,13 @@
 package cn.suiseiseki.www.suiseiseeker.control.postedit;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import cn.suiseiseki.www.suiseiseeker.R;
-import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/25.

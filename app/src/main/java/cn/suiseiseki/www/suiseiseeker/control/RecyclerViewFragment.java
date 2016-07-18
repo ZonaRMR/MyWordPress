@@ -1,19 +1,16 @@
 package cn.suiseiseki.www.suiseiseeker.control;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +26,9 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 
 import cn.suiseiseki.www.suiseiseeker.R;
-import cn.suiseiseki.www.suiseiseeker.model.CategoryAdapter;
 import cn.suiseiseki.www.suiseiseeker.model.MyRecyclerViewAdapter;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
-import cn.suiseiseki.www.suiseiseeker.tools.MyJSONBuilder;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 

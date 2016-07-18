@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import cn.suiseiseki.www.suiseiseeker.R;
-import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 
 /**
  * Created by Suiseiseki/shuikeyi on 2016/3/17.

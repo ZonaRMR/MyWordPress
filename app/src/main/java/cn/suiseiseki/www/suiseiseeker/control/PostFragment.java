@@ -44,8 +44,8 @@ import java.io.ObjectOutputStream;
 import cn.suiseiseki.www.suiseiseeker.R;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 import cn.suiseiseki.www.suiseiseeker.model.PostProvider;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 import cn.suiseiseki.www.suiseiseeker.tools.MyImageLoader.ImageResizer;
-import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
 
 /**

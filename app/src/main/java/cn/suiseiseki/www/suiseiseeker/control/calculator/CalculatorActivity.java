@@ -11,13 +11,11 @@ import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
 import cn.suiseiseki.www.suiseiseeker.R;
-import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
 
 /**
  * Created by Shuikeyi on 2016/7/12.
@@ -34,7 +32,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     public void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
-        View v = findViewById(R.id.calculator_lineaylayout);
         setContentView(R.layout.calculator_layout);
         toolbar = (Toolbar) findViewById(R.id.calculator_toolbar);
         toolbar.setTitle(getString(R.string.calculator));
@@ -47,7 +44,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         Button clearButton = (Button) findViewById(R.id.calculator_clear);
         clearButton.setOnClickListener(this);
         resultView = (TextView) findViewById(R.id.result_calculator);
-        FontHelper.applyFont(this,v,"fonts/myfont.ttf");
         //** ready to calculate **//
         prepare();
 
@@ -61,8 +57,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             case R.id.calculator_cal:
                 String input = (inputText.getText()).toString();
                 if(isCorrect(input)) {
-                    suffixTextView.setText("The suffix is: "+suffix(input));
+                    StringBuilder temp = new StringBuilder().append(suffix(input));
                    try {
+                       temp.delete(temp.length()-3,temp.length());
+                       suffixTextView.setText("The suffix is: "+temp);
                        String result = Double.toString(calculate(suffix(input)));
                        resultView.setText(result);
                    }
@@ -103,6 +101,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     /**
      * Change the formula into suffix
      * Notice that ()*+
+     * We ensure the last element is number,so we append "+0" in the end of formula
      */
     Stack<Character> mStack = new Stack<>();
     StringBuilder sb =new StringBuilder();
@@ -272,7 +271,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                     mystack.push(f-g);
                     break;
                 default:
-                    // haha no one will see this
+                    // Haha no one will see this
             }
         }
         return mystack.pop();

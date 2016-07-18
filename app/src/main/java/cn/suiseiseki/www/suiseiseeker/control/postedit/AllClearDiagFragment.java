@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import cn.suiseiseki.www.suiseiseeker.R;
-import cn.suiseiseki.www.suiseiseeker.control.FontHelper;
-import cn.suiseiseki.www.suiseiseeker.control.PostFragment;
+import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
 
 /**
  * Created by Shuikeyi on 2016/7/4.
