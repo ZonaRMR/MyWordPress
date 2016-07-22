@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 
 import cn.suiseiseki.www.suiseiseeker.R;
+import cn.suiseiseki.www.suiseiseeker.model.MyDatabaseHelper;
 import cn.suiseiseki.www.suiseiseeker.model.Post;
 import cn.suiseiseki.www.suiseiseeker.model.PostProvider;
 import cn.suiseiseki.www.suiseiseeker.tools.FontHelper;
@@ -53,7 +55,7 @@ import cn.suiseiseki.www.suiseiseeker.tools.Settings;
  */
 public class PostFragment extends Fragment {
 
-    public final static String TAG = "PostFragment";
+    public final static String TAG = PostFragment.class.getSimpleName();
     public final static String DELETE_FLAG = "delete_me";
     MyBroadCastReceiver delete_receiver;
 
@@ -72,15 +74,11 @@ public class PostFragment extends Fragment {
     private String mContent;
     private String mUrl;
     private String mFeaturedImageurl;
+    private String date,author;
     /* The Extra / argument */
     final static String POST = "postfragment.post";
-    final static String ARG_ID = "postfragment.id";
-    final static String ARG_TITLE = "postfragment.title";
-    final static String ARG_URL = "postfragment.url";
-    final static String ARG_CONTENT = "postfragment.content";
-    final static String ARG_IMAGEURL = "postfragment.imageurl";
-    final static String ARG_DATE = "postfragment.date";
-    final static String ARG_AUTHOR = "postfragment.authorname";
+
+
 
 
     /**
@@ -167,8 +165,8 @@ public class PostFragment extends Fragment {
                 queryFromPostProvider(temp);
                 id=temp.getId();
                 mTitle = temp.getTitle();
-                String date = temp.getDate();
-                String author = temp.getAuthor();
+                date = temp.getDate();
+                author = temp.getAuthor();
                 mContent = temp.getContent();
                 mUrl = temp.getUrl();
                 mFeaturedImageurl = temp.getFeaturedImageUrl();
@@ -268,29 +266,15 @@ public class PostFragment extends Fragment {
     /**
      * Save Post data to Database
      */
-    public void savePost(Post post)
+    public void savePostToSQL()
     {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream objectoutput = new ObjectOutputStream(byteArrayOutputStream);
-            objectoutput.writeObject(post);
-            objectoutput.flush();
-            byte[] data = byteArrayOutputStream.toByteArray();
-            objectoutput.close();
-            byteArrayOutputStream.close();
-            Uri postUri = PostProvider.POST_CONTENT_URI;
-            ContentValues values = new ContentValues();
-            values.put("_id", post.getId());
-            values.put("post", data);
-            getActivity().getContentResolver().insert(postUri, values);
-            Log.d(TAG,"post s" +
-                    "aved to database");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        StringBuilder mBuilder = new StringBuilder();
+        mBuilder.append("INSERT INTO POST_TABLE(post_id,post_title,post_author,post_date,post_content) VALUES(");
+        mBuilder.append(id).append(',').append("\'"+mTitle+"\',").append("\'"+author+"\',").append("\'"+date+"\',").append("\'"+mContent+"\');");
+        SQLiteDatabase db = CoreControl.getInstance().getDb();
+        db.execSQL(mBuilder.toString());
     }
+
     /**
      * set a notification
      */

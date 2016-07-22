@@ -16,6 +16,8 @@ import cn.suiseiseki.www.suiseiseeker.R;
  */
 public class SplashActivity extends AppCompatActivity {
 
+    private static final String TAG = SplashActivity.class.getSimpleName();
+
     private final int TIME_LENGTH = 3000;
 
     @Override

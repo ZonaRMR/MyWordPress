@@ -30,13 +30,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewFragm
     private final static String TAG = MainActivity.class.getSimpleName();
     private final static String COR_TAG = "CoordinatorFragment";
     private final static String POST_TAG = "PostFragment";
-    String d;
 
     /* The Fragments that control */
     private CoordinatorFragment mCoordinatorFragment;
     private SearchViewFragment mSearchViewFragment = new SearchViewFragment();
     private PostFragment mPostFragment;
-    JSONObject temp;
 
     @Override
     public void onCreate(Bundle savedInstanceState)

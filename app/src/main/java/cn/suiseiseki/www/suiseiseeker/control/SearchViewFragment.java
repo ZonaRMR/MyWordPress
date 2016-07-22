@@ -16,6 +16,7 @@ import cn.suiseiseki.www.suiseiseeker.R;
  * Created by Suiseiseki/shuikeyi on 2016/3/20.
  */
 public class SearchViewFragment  extends Fragment {
+    private final static String TAG = SearchViewFragment.class.getSimpleName();
 
     private String mQuery;
     private static final String QUERY = "cn.suiseiseki.www.query";

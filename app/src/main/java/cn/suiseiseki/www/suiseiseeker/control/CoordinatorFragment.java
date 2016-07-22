@@ -43,7 +43,7 @@ import cn.suiseiseki.www.suiseiseeker.tools.Settings;
  * Created by Suiseiseki/shuikeyi on 2016/3/16.
  */
 public class CoordinatorFragment extends Fragment implements SearchView.OnQueryTextListener{
-    private final static String TAG = "CoordinatorFragment";
+    private final static String TAG = CoordinatorFragment.class.getSimpleName();
     /* The View */
     private ProgressDialog mProgressDialog;
     private Toolbar mToolbar;

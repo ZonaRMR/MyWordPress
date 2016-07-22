@@ -38,7 +38,7 @@ import cn.suiseiseki.www.suiseiseeker.tools.Settings;
  */
 public class RecyclerViewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
-    private static final String TAG = "RecyclerViewFragment";
+    private static final String TAG = RecyclerViewFragment.class.getSimpleName();
     public static final String CATEGORY_ID = "cn.suiseiseki.www.suiseiseeker.category_id";
     public static final String QUERY = "query";
 

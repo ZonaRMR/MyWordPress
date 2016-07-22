@@ -15,7 +15,7 @@ import cn.suiseiseki.www.suiseiseeker.model.Post;
  * Created by Suiseiseki/shuikeyi on 2016/3/15.
  */
 public class MyJSONParser {
-    private static final String TAG = "MyJSONParser";
+    private static final String TAG = MyJSONParser.class.getSimpleName();
     /**
      * Parse JSON data in the webSide and return a List of category
      */

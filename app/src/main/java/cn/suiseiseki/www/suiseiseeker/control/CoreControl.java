@@ -3,6 +3,7 @@ package cn.suiseiseki.www.suiseiseeker.control;
 import android.app.Application;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import cn.suiseiseki.www.suiseiseeker.model.MyDatabaseHelper;
 import cn.suiseiseki.www.suiseiseeker.tools.LruBitmapCache;
 import cn.suiseiseki.www.suiseiseeker.tools.MyJSONParser;
 import cn.suiseiseki.www.suiseiseeker.tools.Settings;
@@ -31,15 +33,26 @@ public class CoreControl extends Application{
      * initialize when created
      */
     public static int state = 0;
-    private static final String TAG = CoreControl.class.getName();
+    private static final String TAG = CoreControl.class.getSimpleName();
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
     private static CoreControl mCoreControl;
+    private static MyDatabaseHelper sMyDatabaseHelper;
     @Override
     public void onCreate()
     {
         super.onCreate();
         mCoreControl = this;
+        if(sMyDatabaseHelper == null)
+            sMyDatabaseHelper = new MyDatabaseHelper(mCoreControl);
+    }
+    public MyDatabaseHelper getMyDatabaseHelper()
+    {
+        return sMyDatabaseHelper;
+    }
+    public SQLiteDatabase getDb()
+    {
+        return sMyDatabaseHelper.getWritableDatabase();
     }
     public synchronized static CoreControl getInstance()
     {

@@ -11,6 +11,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "post_provider.db";
     public static final String POST_TABLE_NAME = "post";
+    private static final String TAG = DbOpenHelper.class.getSimpleName();
 
     private static final int DB_VERSION = 92;
 
