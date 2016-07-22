@@ -22,8 +22,8 @@ apk direct downloading(May not latest version): https://od.lk/d/MzBfMjMzODExNl8/
 ##To start you need: 
 ##你可能需要：
 
-A wordPress site that has JSON API WordPress plugin
-一个wordPress网站并且安装JSON API插件
+A wordPress site that has JSON API
+一个wordPress网站并且提供JSON API
 
 A android phone :) ,you may edit the minsdk to support lower version
 一只Android智能手机,你可以修改minsdk去兼容，目前默认版本为4.4
