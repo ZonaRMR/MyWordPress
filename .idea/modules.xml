@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyWordPress.iml" filepath="$PROJECT_DIR$/MyWordPress.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/greendaogenerotor/greendaogenerotor.iml" filepath="$PROJECT_DIR$/greendaogenerotor/greendaogenerotor.iml" />
     </modules>
   </component>
 </project>

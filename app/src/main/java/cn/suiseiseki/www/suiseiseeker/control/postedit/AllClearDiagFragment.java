@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import cn.suiseiseki.www.suiseiseeker.R;
@@ -22,6 +23,7 @@ public class AllClearDiagFragment extends DialogFragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup root, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.all_clear_fragment_layout,root,false);
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         Button yes = (Button)v.findViewById(R.id.clearall_yes_button);
         Button no = (Button)v.findViewById(R.id.clearall_no_button);
         yes.setOnClickListener(this);

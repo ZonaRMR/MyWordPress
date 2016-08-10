@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import java.util.zip.Inflater;
@@ -23,6 +24,7 @@ public class DeleteDiagFragment extends AllClearDiagFragment {
     {
         View v = super.onCreateView(inflater,root,savedInstanceState);
         mTextView= (TextView)v.findViewById(R.id.all_clear_fragment_textview);
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         mTextView.setText(getString(R.string.delete_post_confirm));
         return v;
     }
